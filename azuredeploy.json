@@ -75,7 +75,7 @@
             }
         },
         "Database password": {
-            "type": "string",
+            "type": "securestring",
             "defaultValue": "dbpasswd",
             "metadata": {
                 "description": "Password for database."
@@ -83,7 +83,9 @@
         }
     },
     "variables": {
-        "deploymentTelemetryKey": "e15aa4db-a1cc-4622-844f-e7dd01596983"
+        "deploymentTelemetryKey": "e15aa4db-a1cc-4622-844f-e7dd01596983",
+        "db-server": "[concat(toLower(parameters('siteName')),'sql-server')]",
+        "db-name": "[concat(toLower(parameters('siteName')),'sql-db')]"
     },
     "resources": [
         {
@@ -137,7 +139,7 @@
                         "Deployment_Telemetry_Instrumentation_Key": "[variables('deploymentTelemetryKey')]",
                         "SonarQubeEdition": "[parameters('SonarQube Edition')]",
                         "SonarQubeVersion": "[parameters('SonarQube Version')]",
-                        "sonar.jdbc.url": "[concat('jdbc:sqlserver://', parameters('siteName'), '-sql-server.database.windows.net:1433;database=', parameters('siteName'), '-sql-db;encrypt=true;']",
+                        "sonar.jdbc.url": "[concat('jdbc:sqlserver://', variables('db-server'), '.database.windows.net:1433;database=', variables('db-name'), ';encrypt=true;']",
                         "sonar.jdbc.username": "[parameters('Database login')]",
                         "sonar.jdbc.password": "[parameters('Database password')]"
                     }
