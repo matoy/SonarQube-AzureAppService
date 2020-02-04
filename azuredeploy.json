@@ -63,8 +63,7 @@
             "defaultValue": "Basic",
             "allowedValues": [
                 "Basic",
-                "Standard",
-                "GP_Gen5_2"
+                "Standard"
             ]
         },
         "Database login": {
@@ -88,6 +87,48 @@
         "db-name": "[concat(toLower(parameters('siteName')),'sql-db')]"
     },
     "resources": [
+         {
+          "type": "Microsoft.Sql/servers",
+          "name": "[variables('databaseServerName')]",
+          "location": "[parameters('location')]",
+          "apiVersion": "2015-05-01-preview",
+          "properties": {
+            "administratorLogin": "[parameters('Database login')]",
+            "administratorLoginPassword": "[parameters('Database password')]",
+            "version": "12.0"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Sql/servers/databases",
+              "name": "[concat(string(variables('db-server')), '/', string(variables('db-name')))]",
+              "location": "[parameters('location')]",
+              "apiVersion": "2017-10-01-preview",
+              "sku": {
+                  "name": "[parameters('Managed database Sku')]",
+              },
+              "properties": {
+                  "collation": "SQL_Latin1_General_CP1_CS_AS",
+                  "catalogCollation": "SQL_Latin1_General_CP1_CI_AS",
+              },
+              "dependsOn": [
+                "[resourceID('Microsoft.Sql/servers/', variables('databaseServerName'))]"
+              ]
+            },
+            {
+              "type": "firewallrules",
+              "name": "AllowAllAzureIps",
+              "location": "[parameters('location')]",
+              "apiVersion": "2015-05-01-preview",
+              "dependsOn": [
+                "[resourceID('Microsoft.Sql/servers/', variables('databaseServerName'))]"
+              ],
+              "properties": {
+                "startIpAddress": "0.0.0.0",
+                "endIpAddress": "0.0.0.0"
+              }
+            }
+          ]
+        },
         {
             "apiVersion": "2016-09-01",
             "name": "[parameters('hostingPlanName')]",
