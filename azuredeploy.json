@@ -9,14 +9,14 @@
         },
         "siteLocation": {
             "type": "string",
-            "defaultValue": "North Central US"
+            "defaultValue": "West Europe"
         },
         "siteName": {
             "type": "string",
             "defaultValue": "SonarQubeAppService"
         },
         "skuName": {
-            "defaultValue": "B1",
+            "defaultValue": "B2",
             "allowedValues": [
                 "B1",
                 "B2",
@@ -34,7 +34,7 @@
             "type": "string"
         },
         "repoUrl": {
-            "defaultValue": "https://github.com/vanderby/SonarQube-AzureAppService",
+            "defaultValue": "https://github.com/matoy/SonarQube-AzureAppService",
             "type": "string"
         },
         "branch": {
