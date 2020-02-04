@@ -136,9 +136,9 @@
                     "properties": {
                         "Deployment_Telemetry_Instrumentation_Key": "[variables('deploymentTelemetryKey')]",
                         "SonarQubeEdition": "[parameters('SonarQube Edition')]",
-                        "SonarQubeVersion": "[parameters('SonarQube Version')]"
-                        "sonar.jdbc.url": "[concat('jdbc:sqlserver://', parameters('siteName'), '-sql-server.database.windows.net:1433;database=', parameters('siteName'), '-sql-db;encrypt=true;']"
-                        "sonar.jdbc.username": "[parameters('Database login')]"
+                        "SonarQubeVersion": "[parameters('SonarQube Version')]",
+                        "sonar.jdbc.url": "[concat('jdbc:sqlserver://', parameters('siteName'), '-sql-server.database.windows.net:1433;database=', parameters('siteName'), '-sql-db;encrypt=true;']",
+                        "sonar.jdbc.username": "[parameters('Database login')]",
                         "sonar.jdbc.password": "[parameters('Database password')]"
                     }
                 },
