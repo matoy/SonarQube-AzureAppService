@@ -180,7 +180,7 @@
                         "Deployment_Telemetry_Instrumentation_Key": "[variables('deploymentTelemetryKey')]",
                         "SonarQubeEdition": "[parameters('SonarQube Edition')]",
                         "SonarQubeVersion": "[parameters('SonarQube Version')]",
-                        "sonar.jdbc.url": "[concat('jdbc:sqlserver://', variables('db-server'), '.database.windows.net:1433;database=', variables('db-name'), ';encrypt=true;']",
+                        "sonar.jdbc.url": "[concat('jdbc:sqlserver://', variables('db-server'), '.database.windows.net:1433;database=', variables('db-name'), ';encrypt=true;')]",
                         "sonar.jdbc.username": "[parameters('Database login')]",
                         "sonar.jdbc.password": "[parameters('Database password')]"
                     }
