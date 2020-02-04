@@ -90,7 +90,7 @@
          {
           "type": "Microsoft.Sql/servers",
           "name": "[variables('db-server')]",
-          "location": "[parameters('location')]",
+          "location": "[parameters('siteLocation')]",
           "apiVersion": "2015-05-01-preview",
           "properties": {
             "administratorLogin": "[parameters('Database login')]",
@@ -101,7 +101,7 @@
             {
               "type": "Microsoft.Sql/servers/databases",
               "name": "[concat(string(variables('db-server')), '/', string(variables('db-name')))]",
-              "location": "[parameters('location')]",
+              "location": "[parameters('siteLocation')]",
               "apiVersion": "2017-10-01-preview",
               "sku": {
                   "name": "[parameters('Managed database Sku')]",
@@ -117,7 +117,7 @@
             {
               "type": "firewallrules",
               "name": "AllowAllAzureIps",
-              "location": "[parameters('location')]",
+              "location": "[parameters('siteLocation')]",
               "apiVersion": "2015-05-01-preview",
               "dependsOn": [
                 "[resourceID('Microsoft.Sql/servers/', variables('db-server'))]"
