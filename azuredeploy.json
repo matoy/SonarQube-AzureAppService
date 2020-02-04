@@ -89,7 +89,7 @@
     "resources": [
          {
           "type": "Microsoft.Sql/servers",
-          "name": "[variables('databaseServerName')]",
+          "name": "[variables('db-server')]",
           "location": "[parameters('location')]",
           "apiVersion": "2015-05-01-preview",
           "properties": {
@@ -111,7 +111,7 @@
                   "catalogCollation": "SQL_Latin1_General_CP1_CI_AS",
               },
               "dependsOn": [
-                "[resourceID('Microsoft.Sql/servers/', variables('databaseServerName'))]"
+                "[resourceID('Microsoft.Sql/servers/', variables('db-server'))]"
               ]
             },
             {
@@ -120,7 +120,7 @@
               "location": "[parameters('location')]",
               "apiVersion": "2015-05-01-preview",
               "dependsOn": [
-                "[resourceID('Microsoft.Sql/servers/', variables('databaseServerName'))]"
+                "[resourceID('Microsoft.Sql/servers/', variables('db-server'))]"
               ],
               "properties": {
                 "startIpAddress": "0.0.0.0",
