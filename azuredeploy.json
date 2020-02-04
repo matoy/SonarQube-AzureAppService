@@ -83,8 +83,8 @@
     },
     "variables": {
         "deploymentTelemetryKey": "e15aa4db-a1cc-4622-844f-e7dd01596983",
-        "db-server": "[concat(toLower(parameters('siteName')),'sql-server')]",
-        "db-name": "[concat(toLower(parameters('siteName')),'sql-db')]"
+        "db-server": "[concat(toLower(parameters('siteName')),'-sqlserver')]",
+        "db-name": "[concat(toLower(parameters('siteName')),'-sqldb')]"
     },
     "resources": [
          {
